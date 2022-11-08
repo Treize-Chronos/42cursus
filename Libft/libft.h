@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:54:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 19:35:14 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 20:21:35 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_isascii( int c );
+int		ft_atoi(const char *str);
+int		ft_toupper(int c);
 size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:26:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 20:07:48 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/08 20:21:10 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/08 20:25:52 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_toupper(int c)
 {
-	size_t	pos;
-	void	*tmp;
-
-	tmp = NULL;
-	pos = 0;
-	while (pos < len)
-	{
-		((unsigned char *)tmp)[pos] = ((const unsigned char *)src)[pos];
-		pos++;
-	}
-	pos = 0;
-	while (pos < len)
-	{
-		((unsigned char *)dst)[pos] = ((const unsigned char *)tmp)[pos];
-		pos++;
-	}
-	return (dst);
+	if (c >= 'a' && c <= 'z')
+		return (c + 32);
+	return (c);
 }

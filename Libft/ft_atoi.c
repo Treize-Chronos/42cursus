@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:26:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 20:07:48 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/08 19:40:55 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/08 20:11:34 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	pos;
-	void	*tmp;
+	int	pos;
+	int	somme;
+	int	neg;
 
-	tmp = NULL;
 	pos = 0;
-	while (pos < len)
+	neg = 1;
+	somme = 0;
+	while (str[pos] == 32 || (str[pos] >= 9 && str[pos] <= 13))
+		pos++;
+	if (str[pos] == '-')
 	{
-		((unsigned char *)tmp)[pos] = ((const unsigned char *)src)[pos];
+		neg *= -1;
 		pos++;
 	}
-	pos = 0;
-	while (pos < len)
+	else if (str[pos] == '+')
+		pos++;
+	while ((str[pos] >= 48 && str[pos] <= 57))
 	{
-		((unsigned char *)dst)[pos] = ((const unsigned char *)tmp)[pos];
+		somme = somme * 10 + (str[pos] - 48);
 		pos++;
 	}
-	return (dst);
+	return (somme * neg);
 }
