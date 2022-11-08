@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:20:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 13:04:05 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 14:41:27 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int pos;
+	int	pos;
 
 	pos = 0;
 	while (s[pos])
