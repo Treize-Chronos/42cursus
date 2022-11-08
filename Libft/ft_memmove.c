@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 19:18:32 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 19:05:45 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/08 15:26:15 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/08 19:34:34 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	pos;
+	void	*tmp;
 
 	pos = 0;
-	while (pos < n)
+	while (pos < len)
 	{
-		((unsigned char *)dst)[pos] = ((const unsigned char *)src)[pos];
+		((unsigned char *)tmp)[pos] = ((const unsigned char *)src)[pos];
+		pos++;
+	}
+	pos = 0;
+	while (pos < len)
+	{
+		((unsigned char *)dst)[pos] = ((const unsigned char *)tmp)[pos];
 		pos++;
 	}
 	return (dst);
