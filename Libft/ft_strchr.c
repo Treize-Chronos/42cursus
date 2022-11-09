@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:26:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/09 16:02:18 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/09 16:04:38 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/09 16:29:19 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	pos;
+	int	pos;
 
 	pos = 0;
-	if (dst > src)
+	while (s[pos])
 	{
-		while (pos < len)
-		{
-			((unsigned char *)dst)[len - 1] = ((const unsigned char *)src)[len - 1];
-			len--;
-		}
+		if (s[pos] == c)
+			return ((char *)(s + pos));
+		pos++;
 	}
-	else
-	{
-		while (pos < len)
-		{
-			((unsigned char *)dst)[pos] = ((const unsigned char *)src)[pos];
-			pos++;
-		}
-	}
-	return (dst);
+	return (NULL);
 }
