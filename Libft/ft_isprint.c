@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:56:26 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 04:33:34 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 04:45:59 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isprint(int c)
 {
-	return (ft_isx (c, 33, 126));
+	if (c >= 33 && c <= 126)
+		return (1);
+	return (0);
 }

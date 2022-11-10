@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:56:50 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 04:30:29 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 04:46:21 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isascii( int c )
 {
-	return (ft_isx (c, 0, 127));
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

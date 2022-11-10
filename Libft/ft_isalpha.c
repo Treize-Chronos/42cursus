@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:37:30 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 04:33:05 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 04:46:32 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isalpha(int c)
 {
-	return (ft_isx (c, 65, 90) + ft_isx (c, 97, 122));
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

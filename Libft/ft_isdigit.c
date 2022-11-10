@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:44:38 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 04:33:10 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 04:46:09 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isdigit(int c)
 {
-	return (ft_isx (c, 48, 57));
+	if ((c >= 48 && c <= 57))
+		return (1);
+	return (0);
 }
