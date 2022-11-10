@@ -1,17 +1,17 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Creator.sh                                         :+:      :+:    :+:    #
+#    creator.sh                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:57:53 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/08 20:05:12 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/11/10 02:23:41 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/sh
-gcc -Werror -Wall -Wextra *.c *.h
+gcc -Werror -Wall -Wextra ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c main.c  *.h
 ./a.out 'a' "-15"
 ./a.out '1' "742455"
 ./a.out 'z' "-545325"
