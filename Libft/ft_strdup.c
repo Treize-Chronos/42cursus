@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 05:00:19 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/10 04:50:43 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/10 05:01:08 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strdup(const char *s1)
 {
-	void	*alloc;
+	char	*s2;
+	int		size;
 
-	alloc = malloc(count * size);
-	if (!alloc)
+	size = ft_strlen(s1) + 1;
+	s2 = malloc(size);
+	if (!s2)
 		return (NULL);
-	ft_bzero(alloc, count * size);
-	return (alloc);
+	ft_strlcpy(s2, s1, size);
+	return (s2);
 }
