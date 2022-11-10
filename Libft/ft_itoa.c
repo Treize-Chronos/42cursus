@@ -1,18 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 16:51:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 05:39:09 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/10 06:44:07 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/10 07:59:09 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	ft_isalnum(int c)
+static int	ft_ncount(int n)
 {
-	return (ft_isalpha(c) + ft_isdigit(c));
+	int ncount;
+
+	ncount = 0;
+	while (n > 0)
+	{
+		n = n / 10;
+		ncount++;
+	}
+	return (ncount);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*nstr;
+	int		nsize;
+
+	nsize = ft_ncount(n);
+	nstr = malloc(nsize + 1);
+	if (!nstr)
+		return (NULL);
+	nstr[nsize] = 0;
+	while (nsize > 0)
+	{
+		nsize--;
+		nstr[nsize] = (n % 10) + 48;
+		n = n / 10;
+	}
+	return (nstr);
 }
