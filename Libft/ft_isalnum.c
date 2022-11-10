@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:51:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 12:55:32 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/10 04:11:02 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	return(ft_isalpha(c) + ft_isdigit(c));
 }

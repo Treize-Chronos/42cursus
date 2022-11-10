@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 12:56:26 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 04:33:34 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/10 03:46:13 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_isprint(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	return (ft_isx (c, 33, 126));
+	void	*alloc;
+	size_t	pos;
+
+	alloc = malloc(count * size);
+	if (!alloc)
+		return (NULL);
+	ft_bzero(alloc, count * size);
+	return (alloc);
 }

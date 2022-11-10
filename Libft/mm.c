@@ -11,20 +11,27 @@ size_t    ft_strlen(const char *s)
     return (pos);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	pos;
+	size_t	lendst;
+	size_t	lensrc;
 
-	pos = 0;
+	lendst = ft_strlen(dst);
+	lensrc = ft_strlen(src);
+	pos = lendst;
 	if (!dstsize)
 		return (ft_strlen(src));
 	while (pos < dstsize - 1)
 	{
-		dst[pos] = src[pos];
+		dst[pos] = src[pos - lendst];
 		pos++;
 	}
 	dst[pos] = 0;
-	return (ft_strlen(src));
+	if (dstsize + lensrc < lendst + lensrc)
+		return (dstsize + lensrc);
+	else
+		return (lendst + lensrc);
 }
 
 int main(void)
@@ -36,8 +43,8 @@ int main(void)
 	l[0] = 'l';
 	k[1] = 0;
 	l[1] = 0;
-    int i = strlcpy(k, "ko", 6);
-	int j = ft_strlcpy(l, "ko", 6);
+    int i = strlcat(k, "ko", 6);
+	int j = ft_strlcat(l, "ko", 6);
 
     printf("%d%s\n", i, k);
 	printf("%d%s", j, l);
