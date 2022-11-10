@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:57:53 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/10 10:37:16 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/11/10 11:15:22 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,5 +60,12 @@ gcc -Wall -Wextra -Werror ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalp
 ./a.out "-523333" | cat -e
 ./a.out "-4535" | cat -e
 ./a.out "753315" | cat -e
+rm a.out
+rm *.gch
+gcc -Wall -Wextra -Werror ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_substr.c ft_tolower.c ft_toupper.c main_memchr.c libft.h
+./a.out "hdkf" "h" 36 | cat -e
+./a.out "hdkf" "p" 4 | cat -e
+./a.out "hdgexkfr" "w" 2| cat -e
+./a.out "hdgexkfr" "e" 9| cat -e
 rm a.out
 rm *.gch

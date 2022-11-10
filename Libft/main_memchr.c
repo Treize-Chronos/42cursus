@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   main_memchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:26:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 11:20:34 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/07 14:22:51 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/10 11:18:41 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	main(int argc, char **argv)
 {
-	size_t	pos;
-
-	pos = 0;
-	if (dst > src)
-	{
-		while (pos < len)
-		{
-			((unsigned char *)dst)[len - 1] = ((unsigned char *)src)[len - 1];
-			len--;
-		}
-	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	(void) argc;
+	printf("ft_memchr(%s,%c,%d) = %s\n", argv[1], argv[2][0], atoi(argv[3]), (char *)ft_memchr(argv[1], argv[2][0], atoi(argv[3])));
+	printf("memchr(%s,%c,%d) = %s\n\n", argv[1], argv[2][0], atoi(argv[3]), (char *)memchr(argv[1], argv[2][0], atoi(argv[3])));
+	return (0);
 }
