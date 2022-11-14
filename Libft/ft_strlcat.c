@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 01:00:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 02:18:01 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 17:55:16 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	pos;
-	size_t	lendst;
+	size_t	possrc;
 	size_t	lensrc;
 
-	lendst = ft_strlen(dst);
 	lensrc = ft_strlen(src);
-	pos = lendst;
+	pos = 0;
+	possrc = 0;
 	if (!dstsize)
 		return (ft_strlen(src));
-	while (pos < dstsize - 1)
-	{
-		dst[pos] = src[pos - lendst];
+	while (dst[pos] && pos <= dstsize - 1)
 		pos++;
+	while (src[possrc] && pos < dstsize - 1)
+	{
+		dst[pos] = src[possrc];
+		pos++;
+		possrc++;
 	}
-	dst[pos] = 0;
-	if (dstsize + lensrc < lendst + lensrc)
+	if (possrc)
+		dst[pos] = 0;
+	if (dstsize + lensrc < pos - possrc + lensrc)
 		return (dstsize + lensrc);
 	else
-		return (lendst + lensrc);
+		return (pos - possrc + lensrc);
 }

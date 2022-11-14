@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 05:24:44 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 08:51:27 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 10:47:16 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	s2 = malloc(len);
 	if (!s2)
 		return (NULL);
-	ft_strlcpy(s2, s + start , len);
+	ft_strlcpy(s2, s + start, len);
 	return (s2);
 }

@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 23:21:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/10 00:09:21 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 18:00:48 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	pos = 0;
 	if (!dstsize)
 		return (ft_strlen(src));
-	while (pos < dstsize - 1)
+	while (pos < dstsize - 1 && src[pos])
 	{
 		dst[pos] = src[pos];
 		pos++;
