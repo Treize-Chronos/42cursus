@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 04:50:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/15 13:15:57 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/15 18:42:39 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/15 20:47:06 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+static void	ft_putchar(char c, int fd)
 {
-	char	*s2;
-	int		size;
+	write(fd, &c, 1);
+}
 
-	size = ft_strlen(s1) + 1;
-	s2 = malloc(size);
-	if (!s2)
-		return (NULL);
-	ft_strlcpy(s2, s1, size);
-	return (s2);
+void	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int	n_unsigned;
+
+	if (n < 0)
+	{
+		n_unsigned = n * -1;
+		ft_putchar('-', fd);
+	}
+	else
+		n_unsigned = n;
+	if (n_unsigned >= 10)
+		ft_putnbr_fd(n_unsigned / 10, fd);
+	ft_putchar((n_unsigned % 10) + 48, fd);
 }
