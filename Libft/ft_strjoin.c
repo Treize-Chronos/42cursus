@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 05:43:08 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/15 20:41:44 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/16 14:22:14 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
 	int		size;
+
 	if (!s1 || !s2)
 		return (NULL);
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
