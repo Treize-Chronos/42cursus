@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:07:18 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/09 22:49:27 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 15:51:16 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,21 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int		nchar;
-	int		len_needle;
-	size_t	pos;
+	size_t	pos_h;
+	size_t	pos_n;
 
-	pos = 0;
-	nchar = 0;
-	len_needle = ft_strlen(needle);
-	while (pos < len && nchar < len_needle && haystack[pos])
+	pos_h = 0;
+	while (pos_h < len && haystack[pos_h])
 	{
-		if (haystack[pos] == needle[nchar])
-			nchar++;
-		else if (haystack[pos] == needle[0])
-			nchar++;
-		else
-			nchar = 0;
-		pos++;
+		pos_n = 0;
+		while (pos_h + pos_n < len && haystack[pos_h + pos_n] == needle[pos_n] \
+		&& needle[pos_n])
+				pos_n++;
+		if (!needle[pos_n])
+			return ((char *)(haystack + pos_h));
+		pos_h++;
 	}
-	if (nchar == len_needle)
-		return ((char *)(haystack + pos - len_needle));
+	if (!pos_h && !ft_strlen(needle))
+		return ((char *)(haystack));
 	return (NULL);
 }
