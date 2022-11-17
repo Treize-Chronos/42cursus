@@ -3,3 +3,7 @@ a.out
 *.gch
 /libft-war-machine
 /Libftest
+/libft-unit-test
+*.o
+*.a
+/*/libftTester-master
