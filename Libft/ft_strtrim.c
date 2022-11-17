@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:18:34 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/15 15:51:53 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 18:47:33 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_testset(char c, char const *set)
+static int	ft_test_set(char c, char const *set)
 {
 	int	pos;
 
@@ -26,22 +26,22 @@ static int	ft_testset(char c, char const *set)
 	return (0);
 }
 
-static int	ft_posstart(char const *s1, char const *set)
+static int	ft_pos_start(char const *s1, char const *set)
 {
 	int	pos;
 
 	pos = 0;
-	while (ft_testset(s1[pos], set) && s1[pos])
+	while (ft_test_set(s1[pos], set) && s1[pos])
 		pos++;
 	return (pos);
 }
 
-static int	ft_posend(char const *s1, char const *set)
+static int	ft_pos_end(char const *s1, char const *set)
 {
 	int	pos;
 
 	pos = ft_strlen(s1) - 1;
-	while (ft_testset(s1[pos], set) && pos)
+	while (ft_test_set(s1[pos], set) && pos)
 		pos--;
 	return (pos);
 }
@@ -56,8 +56,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	pos = 0;
 	if (!s1 || !set)
 		return (NULL);
-	posstart = ft_posstart(s1, set);
-	posend = ft_posend(s1, set);
+	posstart = ft_pos_start(s1, set);
+	posend = ft_pos_end(s1, set);
 	if (posend < posstart)
 		posend = posstart - 1;
 	s2 = malloc(posend - posstart + 2);

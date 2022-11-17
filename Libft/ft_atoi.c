@@ -6,9 +6,16 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:40:55 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/08 20:11:34 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 19:01:16 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+static int	check_neg(int neg)
+{
+	if (neg == 1)
+		return (-1);
+	return (0);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -30,6 +37,8 @@ int	ft_atoi(const char *str)
 		pos++;
 	while ((str[pos] >= 48 && str[pos] <= 57))
 	{
+		if (somme != (somme * 10) / 10)
+			return (check_neg(neg));
 		somme = somme * 10 + (str[pos] - 48);
 		pos++;
 	}

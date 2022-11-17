@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 16:05:24 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 18:45:57 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	alloc = malloc(count * size);
 	if (!alloc)
 		return (NULL);
-	ft_bzero(alloc, count * size);
+	ft_memset(alloc, 0, count * size);
 	return (alloc);
 }

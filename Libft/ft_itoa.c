@@ -6,14 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 06:44:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/14 14:28:27 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/17 18:44:38 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static int	ft_ncount(int n)
+static int	ft_count(int n)
 {
 	int	ncount;
 
@@ -38,7 +37,7 @@ char	*ft_itoa(int n)
 	int		neg;
 
 	neg = 0;
-	nsize = ft_ncount(n);
+	nsize = ft_count(n);
 	nstr = malloc(nsize + 1);
 	if (!nstr)
 		return (NULL);
