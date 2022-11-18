@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 01:00:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 16:00:54 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 15:20:13 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	pos = 0;
 	possrc = 0;
 	if (!dstsize)
-		return (ft_strlen(src));
+		return (lensrc);
 	while (dst[pos] && pos <= dstsize - 1)
 		pos++;
 	while (src[possrc] && pos < dstsize - 1)
@@ -33,7 +33,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	if (possrc)
 		dst[pos] = 0;
-	if (dstsize + lensrc < pos - possrc + lensrc && dstsize != (size_t)-1)
+	if (dstsize < pos - possrc)
 		return (dstsize + lensrc);
 	else
 		return (pos - possrc + lensrc);
