@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:29:26 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/18 11:34:06 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 14:27:22 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*newlst;
+	t_list	*new;
 
+	newlst = NULL;
+	if (!lst || !f || !del)
+		return (NULL);
+	while (lst)
+	{
+		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&newlst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&newlst, new);
+		lst = lst->next;
+	}
+	return (newlst);
 }
