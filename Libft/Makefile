@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:57:48 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/18 15:44:49 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/11/18 16:44:10 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,13 @@ OBJSB	= ${SRCSB:.c=.o}
 
 NAME	= libft.a
 
-CC		= cc
+CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror -I
+CFLAGS	= -Wall -Wextra -Werror -I ${Header}
 
-AR		= ar rc
+AR		= ar rcs
 
 RM		= rm -f
-
-.c.o:
-			${CC} ${CFLAGS} ${Header} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
@@ -42,7 +39,7 @@ bonus:	${OBJS} ${OBJSB}
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${OBJSB}
 
 fclean:		clean
 			${RM} ${NAME}
