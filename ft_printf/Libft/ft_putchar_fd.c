@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 11:59:55 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/15 18:21:07 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/15 19:10:53 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	void	*alloc;
-
-	if (count && size > SIZE_MAX / count)
-		return (NULL);
-	alloc = malloc(count * size);
-	if (!alloc)
-		return (NULL);
-	ft_memset(alloc, 0, count * size);
-	return (alloc);
+	write(fd, &c, 1);
 }

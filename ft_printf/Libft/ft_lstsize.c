@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 11:59:55 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/17 19:27:39 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/18 17:39:42 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_lstsize(t_list *lst)
 {
-	void	*alloc;
+	int	n;
 
-	if (count && size > SIZE_MAX / count)
-		return (NULL);
-	alloc = malloc(count * size);
-	if (!alloc)
-		return (NULL);
-	ft_memset(alloc, 0, count * size);
-	return (alloc);
+	n = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		n++;
+	}
+	return (n);
 }

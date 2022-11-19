@@ -1,9 +1,9 @@
 a.out
 .DS_Store
 *.gch
-/libft-war-machine
-/Libftest
-/libft-unit-test
+/*/libft-war-machine
+/*/Libftest
+/*/libft-unit-test
 *.o
 *.a
 /*/libftTester-master

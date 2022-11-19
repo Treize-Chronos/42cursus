@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 11:59:55 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/10 05:24:44 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/17 15:51:47 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*alloc;
+	char	*s2;
+	size_t	pos;
+	size_t	lens;
 
-	if (count && size > SIZE_MAX / count)
+	if (!s)
 		return (NULL);
-	alloc = malloc(count * size);
-	if (!alloc)
+	pos = 0;
+	lens = ft_strlen(s);
+	if (lens < len)
+		s2 = malloc(lens + 1);
+	else
+		s2 = malloc(len + 1);
+	if (!s2)
 		return (NULL);
-	ft_memset(alloc, 0, count * size);
-	return (alloc);
+	while (pos < len && pos < lens && !(start >= lens))
+	{
+		s2[pos] = (s + start)[pos];
+		pos++;
+	}
+	s2[pos] = 0;
+	return (s2);
 }
