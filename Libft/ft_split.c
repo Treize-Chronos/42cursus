@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:03:35 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/16 18:43:18 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 18:52:51 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	ft_complete_cell(char const *s, char c, char **tab, int pos)
 			pos++;
 	}
 	tab[postab] = (NULL);
-	return (0);
+	return (-1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -86,10 +86,11 @@ char	**ft_split(char const *s, char c)
 	if (!tab)
 		return (NULL);
 	posfree = ft_complete_cell(s, c, tab, pos);
-	if (posfree)
+	if (posfree != -1)
 	{
 		while (pos < posfree)
 			free(tab[pos++]);
+		free(tab);
 		return (NULL);
 	}
 	return (tab);
