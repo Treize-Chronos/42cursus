@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:29:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 12:12:35 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 12:30:03 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 
 void	ft_putnbr(int n);
-void	ft_putunbr(int n);
 void	ft_putunbr_base(unsigned int unn, int size_set, char *set);
 
 int		ft_nbrlen(int n);
