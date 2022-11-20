@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:24:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 12:13:20 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 14:45:34 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static int	put_ft_printf(char c, void *arg)
 		size = ft_putunbrlen_base((int)arg, 16, "0123456789abcdef");
 	else if (c == 'X')
 		size = ft_putunbrlen_base((int)arg, 16, "0123456789ABCDEF");
-	else if (c == '%')
-		size = ft_putchar('%');
 	return (size);
 }
 
@@ -46,17 +44,19 @@ int	ft_printf(const char *format, ...)
 
 	pos = 0;
 	size = 0;
+	if (write(1, 0, 0) != 0)
+		return (-1);
 	va_start(larg, format);
 	while (format[pos])
 	{
-		if (format[pos] == '%')
+		if (format[pos] == '%' && format[pos + 1] != '%')
 		{
 			size += put_ft_printf(format[pos + 1], va_arg(larg, void *));
-			if (format[pos + 1])
-				pos ++;
 		}
 		else
 			size += ft_putchar(format[pos]);
+		if (format[pos + 1] && format[pos] == '%')
+				pos ++;
 		pos++;
 	}
 	va_end(larg);

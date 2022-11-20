@@ -6,17 +6,19 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 21:02:58 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 12:49:49 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 14:28:24 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unbrlen_base(unsigned int un, unsigned int size_set)
+int	ft_unbrlen_base(size_t un, size_t size_set)
 {
 	int	count;
 
 	count = 0;
+	if (un == 0)
+		count++;
 	while (un)
 	{
 		un /= size_set;

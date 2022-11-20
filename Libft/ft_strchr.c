@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:04:38 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 15:57:12 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 13:52:32 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + pos));
 		pos++;
 	}
-	if (s[pos] == c)
+	if (s[pos] == (char)c)
 		return ((char *)(s + pos));
 	return (NULL);
 }

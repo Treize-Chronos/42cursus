@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 12:06:08 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/20 12:48:22 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/11/20 15:08:30 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS	= ft_nbrlen.c \
 		ft_putunbr_base.c \
 		ft_putunbrlen_base.c \
 		ft_unbrlen_base.c \
+
+LIBFT = ./libft/libft.a
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -36,20 +38,20 @@ AR		= ar rcs
 RM		= rm -f
 
 ${NAME}:	${OBJS}
+			make all -C ./Libft
 			${AR} ${NAME} ${OBJS}
 
 %.o:		%.c ${HEADERS}
 			${CC} ${CFLAGS} -c $< -o $@
 
-bonus:		${OBJSB}
-			${AR} ${NAME} ${OBJS} ${OBJSB}
-
 all:		${NAME}
 
 clean:
+			make fclean -C ./Libft
 			${RM} ${OBJS} ${OBJSB}
 
 fclean:		clean
+			make fclean -C ./Libft
 			${RM} ${NAME}
 
 re:			fclean all

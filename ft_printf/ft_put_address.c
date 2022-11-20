@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 11:50:21 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 14:29:26 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	ft_put_address(size_t n)
 {
 	ft_putstr("0x");
 	ft_put_long_nbr_hex(n);
-	return (14);
+	return (2 + ft_unbrlen_base(n, 16));
 }
