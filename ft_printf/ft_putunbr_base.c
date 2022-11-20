@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen_base.c                                   :+:      :+:    :+:   */
+/*   ft_putunbr_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 21:02:58 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 21:47:37 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/20 12:12:44 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_nbrlen_base(int n, int size_set)
+void	ft_putunbr_base(unsigned int un, int size_set, char *set)
 {
-	int	pos;
-
-	pos = 0;
-	while (n)
-	{
-		n /= size_set;
-		pos++;
-	}
-	return (pos);
+	if (un > size_set - 1)
+		ft_putunbr_base(un / size_set, size_set, set);
+	ft_putchar(set[un % size_set]);
 }

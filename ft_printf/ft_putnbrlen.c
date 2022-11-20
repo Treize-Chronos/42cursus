@@ -6,11 +6,11 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 21:31:39 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 21:46:34 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/20 11:50:40 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbrlen(int n)
 {
