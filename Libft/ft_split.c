@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:03:35 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 18:52:51 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 15:18:38 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_count_size_tab(char const *s, char c)
 	return (count + 1);
 }
 
-static int	ft_count_size_cell(char const *s, char c)
+static int	ft_count_size_line(char const *s, char c)
 {
 	int	pos;
 	int	count;
@@ -46,7 +46,7 @@ static int	ft_count_size_cell(char const *s, char c)
 	return (count);
 }
 
-static int	ft_complete_cell(char const *s, char c, char **tab, int pos)
+static int	ft_complete_line(char const *s, char c, char **tab, int pos)
 {
 	int	postab;
 	int	poscell;
@@ -57,7 +57,7 @@ static int	ft_complete_cell(char const *s, char c, char **tab, int pos)
 		if (s[pos] != c && s[pos])
 		{
 			poscell = 0;
-			tab[postab] = malloc(ft_count_size_cell(s + pos, c) + 1);
+			tab[postab] = malloc(ft_count_size_line(s + pos, c) + 1);
 			if (!tab[postab])
 				return (postab);
 			while (s[pos] != c && s[pos])
@@ -85,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	tab = malloc(sizeof(tab) * ft_count_size_tab(s, c));
 	if (!tab)
 		return (NULL);
-	posfree = ft_complete_cell(s, c, tab, pos);
+	posfree = ft_complete_line(s, c, tab, pos);
 	if (posfree != -1)
 	{
 		while (pos < posfree)

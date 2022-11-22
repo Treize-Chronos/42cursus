@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 03:02:09 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/19 11:59:55 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 13:12:14 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*alloc;
 
-	if (count && size > SIZE_MAX / count)
+	if (count > 0 && size >= SIZE_MAX / count)
 		return (NULL);
 	alloc = malloc(count * size);
 	if (!alloc)
