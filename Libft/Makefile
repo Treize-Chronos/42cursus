@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 12:06:08 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/19 12:06:29 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/11/22 17:00:00 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ RM		= rm -f
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 
-%.o:		%.c ${HEADERS}
+%.o:		%.c ${HEADER}
 			${CC} ${CFLAGS} -c $< -o $@
 
 bonus:		${OBJSB}
