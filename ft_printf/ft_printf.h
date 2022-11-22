@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:29:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 14:34:17 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 14:48:13 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int		ft_nbrlen(int n);
 int		ft_putchar(char c);
 int		ft_putnbrlen(int n);
 int		ft_putstr(const char *s);
-int		ft_put_address(size_t n);
+int		ft_put_address(unsigned long un);
+int		ft_put_printf(char c, void *arg);
 int		ft_printf(const char *format, ...);
-int		ft_unbrlen_base(size_t un, size_t size_set);
+int		ft_unbrlen_base(unsigned long un, unsigned long size_set);
 int		ft_putunbrlen_base(unsigned int n, unsigned int size_set, char *set);
 
 #endif

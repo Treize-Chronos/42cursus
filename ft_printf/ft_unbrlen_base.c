@@ -6,13 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 21:02:58 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/20 14:28:24 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 15:13:14 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unbrlen_base(size_t un, size_t size_set)
+int	ft_unbrlen_base(unsigned long un, unsigned long size_set)
 {
 	int	count;
 
