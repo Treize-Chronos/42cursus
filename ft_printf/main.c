@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:32:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/22 14:33:15 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 20:18:43 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(void)
 	//printf("\n%d", printf("\n%p", j));
 	//ft_printf("\n%d", ft_printf("\n%%%c", 'j'));
 	//printf("\n%d", printf("\n%%%c", 'j'));
-	ft_printf("\n%d", ft_printf("\n%%%s", "j"));
-	printf("\n%d", printf("\n%%%s", "j"));
+	//ft_printf("\n%d", ft_printf("\n%%%s", "j"));
+	//printf("\n%d", printf("\n%%%s", "j"));
 	//ft_printf("\n%d", ft_printf("\n%d", 42));
 	//printf("\n%d", printf("\n%d", 42));
 	//ft_printf("\n%d", ft_printf("\n%i", 42));

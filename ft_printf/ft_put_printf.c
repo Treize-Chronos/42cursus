@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:38:59 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/22 14:43:50 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/22 20:01:38 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	ft_put_printf(char c, void *arg)
 	else if (c == 'p')
 		size = ft_put_address((long)arg);
 	else if (c == 'd' || c == 'i')
-		size = ft_putnbrlen((int)arg);
+		size = ft_putnbr((int)arg);
 	else if (c == 'u')
-		size = ft_putunbrlen_base((int)arg, 10, "0123456789");
+		size = ft_putnbr_base((unsigned int)arg, 10, "0123456789");
 	else if (c == 'x')
-		size = ft_putunbrlen_base((int)arg, 16, "0123456789abcdef");
+		size = ft_putnbr_base((unsigned int)arg, 16, "0123456789abcdef");
 	else if (c == 'X')
-		size = ft_putunbrlen_base((int)arg, 16, "0123456789ABCDEF");
+		size = ft_putnbr_base((unsigned int)arg, 16, "0123456789ABCDEF");
 	return (size);
 }
