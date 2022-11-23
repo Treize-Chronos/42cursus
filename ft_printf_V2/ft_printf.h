@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 10:57:42 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 15:15:48 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/19 11:29:12 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/23 17:19:30 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
 
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+int	ft_print_nbr(long n);
+int	ft_print_char(char c);
+int	ft_print_str(const char *s);
+int	ft_print_address(unsigned long un);
+int	ft_print_all(char c, va_list arg);
+int	ft_printf(const char *format, ...);
+int	ft_print_base(unsigned long un, unsigned long size_set, char *set);
+
+#endif

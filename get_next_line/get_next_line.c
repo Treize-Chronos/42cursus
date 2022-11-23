@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 10:57:42 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 15:15:48 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/11/23 14:57:10 by eguelin           #+#    #+#             */
+/*   Updated: 2022/11/23 15:21:45 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <get_next_line.h>
 
-int	ft_putchar(char c)
+char	*get_next_line(int fd)
 {
-	return (write(1, &c, 1));
+	read(fd, void *buf, size_t nbyte);
 }
