@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:29:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 17:19:30 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/23 17:43:05 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int	ft_print_nbr(long n);
+int	ft_print_nbr(int n);
 int	ft_print_char(char c);
 int	ft_print_str(const char *s);
-int	ft_print_address(unsigned long un);
 int	ft_print_all(char c, va_list arg);
+int	ft_print_address(unsigned long un);
 int	ft_printf(const char *format, ...);
 int	ft_print_base(unsigned long un, unsigned long size_set, char *set);
 
