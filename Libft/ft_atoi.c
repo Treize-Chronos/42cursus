@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:40:55 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 19:01:16 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/23 11:51:14 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	check_neg(int neg)
 
 int	ft_atoi(const char *str)
 {
-	int	pos;
-	int	somme;
-	int	neg;
+	int		pos;
+	long	somme;
+	int		neg;
 
 	pos = 0;
 	neg = 1;
