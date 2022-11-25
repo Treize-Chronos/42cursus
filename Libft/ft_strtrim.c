@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:18:34 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 18:47:33 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 14:25:56 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_test_set(char c, char const *set)
 {
-	int	pos;
+	size_t	pos;
 
 	pos = 0;
 	while (set[pos])
@@ -26,9 +26,9 @@ static int	ft_test_set(char c, char const *set)
 	return (0);
 }
 
-static int	ft_pos_start(char const *s1, char const *set)
+static size_t	ft_start(char const *s1, char const *set)
 {
-	int	pos;
+	size_t	pos;
 
 	pos = 0;
 	while (ft_test_set(s1[pos], set) && s1[pos])
@@ -36,9 +36,9 @@ static int	ft_pos_start(char const *s1, char const *set)
 	return (pos);
 }
 
-static int	ft_pos_end(char const *s1, char const *set)
+static size_t	ft_end(char const *s1, char const *set)
 {
-	int	pos;
+	size_t	pos;
 
 	pos = ft_strlen(s1) - 1;
 	while (ft_test_set(s1[pos], set) && pos)
@@ -48,26 +48,26 @@ static int	ft_pos_end(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		pos;
-	int		posstart;
-	int		posend;
+	size_t	pos;
+	size_t	start;
+	size_t	end;
 	char	*s2;
 
 	pos = 0;
 	if (!s1 || !set)
 		return (NULL);
-	posstart = ft_pos_start(s1, set);
-	posend = ft_pos_end(s1, set);
-	if (posend < posstart)
-		posend = posstart - 1;
-	s2 = malloc(posend - posstart + 2);
+	start = ft_start(s1, set);
+	end = ft_end(s1, set);
+	if (end < start)
+		end = start - 1;
+	s2 = malloc(end - start + 2);
 	if (!s2)
 		return (NULL);
 	pos = 0;
-	while (posstart < posend + 1)
+	while (start < end + 1)
 	{
-		s2[pos] = s1[posstart];
-		posstart++;
+		s2[pos] = s1[start];
+		start++;
 		pos++;
 	}
 	s2[pos] = 0;

@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 06:44:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 18:44:38 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 12:48:12 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static int	ft_count(int n)
 {
-	int	ncount;
+	int	count;
 
-	ncount = 0;
+	count = 0;
 	if (n <= 0)
 	{
 		n *= -1;
-		ncount++;
+		count++;
 	}
 	while ((unsigned int)n > 0)
 	{
 		n = n / 10;
-		ncount++;
+		count++;
 	}
-	return (ncount);
+	return (count);
 }
 
 char	*ft_itoa(int n)

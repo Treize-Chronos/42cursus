@@ -6,9 +6,11 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:40:55 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 11:51:14 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 12:47:30 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static int	check_neg(int neg)
 {
@@ -19,7 +21,7 @@ static int	check_neg(int neg)
 
 int	ft_atoi(const char *str)
 {
-	int		pos;
+	size_t	pos;
 	long	somme;
 	int		neg;
 
@@ -37,9 +39,9 @@ int	ft_atoi(const char *str)
 		pos++;
 	while ((str[pos] >= 48 && str[pos] <= 57))
 	{
-		if (somme != (somme * 10) / 10)
+		if (somme != (somme * 10 + (str[pos] - '0')) / 10)
 			return (check_neg(neg));
-		somme = somme * 10 + (str[pos] - 48);
+		somme = somme * 10 + (str[pos] - '0');
 		pos++;
 	}
 	return (somme * neg);

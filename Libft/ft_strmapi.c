@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:33:06 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/17 18:48:53 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 13:19:10 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int		pos;
-	char				*s2;
+	size_t	pos;
+	char	*s2;
 
-	if (!s)
+	if (!s || !f)
 		return (NULL);
 	pos = 0;
 	s2 = malloc(ft_strlen(s) + 1);

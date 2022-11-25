@@ -6,16 +6,16 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:03:35 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/22 15:18:38 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 13:33:43 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_size_tab(char const *s, char c)
+static int	ft_count_tab(char const *s, char c)
 {
-	int	pos;
-	int	count;
+	size_t	pos;
+	int		count;
 
 	pos = 0;
 	count = 0;
@@ -31,10 +31,10 @@ static int	ft_count_size_tab(char const *s, char c)
 	return (count + 1);
 }
 
-static int	ft_count_size_line(char const *s, char c)
+static size_t	ft_count_word(char const *s, char c)
 {
-	int	pos;
-	int	count;
+	size_t	pos;
+	size_t	count;
 
 	pos = 0;
 	count = 0;
@@ -46,30 +46,30 @@ static int	ft_count_size_line(char const *s, char c)
 	return (count);
 }
 
-static int	ft_complete_line(char const *s, char c, char **tab, int pos)
+static int	ft_complete_word(char const *s, char c, char **tab, int pos)
 {
-	int	postab;
-	int	poscell;
+	int		pos_tab;
+	size_t	pos_word;
 
-	postab = 0;
+	pos_tab = 0;
 	while (s[pos])
 	{
 		if (s[pos] != c && s[pos])
 		{
-			poscell = 0;
-			tab[postab] = malloc(ft_count_size_line(s + pos, c) + 1);
-			if (!tab[postab])
-				return (postab);
+			pos_word = 0;
+			tab[pos_tab] = malloc(ft_count_word(s + pos, c) + 1);
+			if (!tab[pos_tab])
+				return (pos_tab);
 			while (s[pos] != c && s[pos])
 			{
-				tab[postab][poscell++] = s[pos++];
+				tab[pos_tab][pos_word++] = s[pos++];
 			}
-			tab[postab++][poscell] = 0;
+			tab[pos_tab++][pos_word] = 0;
 		}
 		while (s[pos] == c && s[pos])
 			pos++;
 	}
-	tab[postab] = (NULL);
+	tab[pos_tab] = (NULL);
 	return (-1);
 }
 
@@ -77,18 +77,18 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		pos;
-	int		posfree;
+	int		end_free;
 
 	pos = 0;
 	if (!s)
 		return (NULL);
-	tab = malloc(sizeof(tab) * ft_count_size_tab(s, c));
+	tab = malloc(sizeof(tab) * ft_count_tab(s, c));
 	if (!tab)
 		return (NULL);
-	posfree = ft_complete_line(s, c, tab, pos);
-	if (posfree != -1)
+	end_free = ft_complete_word(s, c, tab, pos);
+	if (end_free != -1)
 	{
-		while (pos < posfree)
+		while (pos < end_free)
 			free(tab[pos++]);
 		free(tab);
 		return (NULL);

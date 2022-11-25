@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 04:50:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/15 13:15:57 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 13:13:47 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strdup(const char *s1)
 {
 	char	*s2;
-	int		size;
+	size_t	size;
 
 	size = ft_strlen(s1) + 1;
 	s2 = malloc(size);
