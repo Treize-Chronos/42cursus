@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:57:10 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 15:21:45 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/23 18:24:11 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	read(fd, void *buf, size_t nbyte);
+	void	buf[999];
+
+	read(fd, 1, 1);
+	return ((char *)buf);
 }

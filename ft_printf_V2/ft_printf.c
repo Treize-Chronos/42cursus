@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:24:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 17:22:20 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 14:54:06 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	larg;
-	int		pos;
+	size_t	pos;
 	int		size;
 
 	pos = 0;

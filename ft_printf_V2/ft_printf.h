@@ -6,13 +6,12 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:29:12 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/23 17:43:05 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/25 14:34:40 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
 
