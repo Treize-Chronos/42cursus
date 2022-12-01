@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:24:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/11/25 14:54:06 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/01 13:08:36 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_printf(const char *format, ...)
 
 	pos = 0;
 	size = 0;
-	if (write(1, 0, 0) != 0)
+	if (write(1, 0, 0) != 0 || !format)
 		return (-1);
 	va_start(larg, format);
 	while (format[pos])
