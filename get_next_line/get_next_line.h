@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:16:54 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/02 18:22:54 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 19:15:33 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ typedef struct s_list
 	size_t			size;
 	struct s_list	*next;
 }	t_list;
-
-# define BUFFER_SIZE 4
 
 void	ft_lstclear(t_list **lst);
 
