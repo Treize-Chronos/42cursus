@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 15:16:54 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/03 12:53:52 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/12/03 13:41:51 by eguelin           #+#    #+#             */
+/*   Updated: 2022/12/03 20:58:57 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ typedef struct s_list
 
 void	ft_lstclear(t_list **lst);
 
-int		jsp(t_list	**lst, char *buf);
-int		ft_lstadd_new_back(t_list **lst, char *content, size_t size_buf);
+int		count(t_list **lst, char *buf, char **tmp);
+int		creat_tmp(char *buf, char **tmp, size_t i, t_list **lst);
+int		ft_lstadd_new_back(t_list **lst, char *content, size_t size);
 
-char	*ft_lstjion(t_list **lst);
 char	*ft_alloc_line(t_list **lst);
+char	*ft_lstjion(t_list **lst);
 char	*get_next_line(int fd);
 
 #endif

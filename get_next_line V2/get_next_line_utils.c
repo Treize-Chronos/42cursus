@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 16:34:39 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/03 13:14:43 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/12/03 13:46:07 by eguelin           #+#    #+#             */
+/*   Updated: 2022/12/03 19:44:12 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,26 @@ void	ft_lstclear(t_list **lst)
 	}
 }
 
-int	ft_lstadd_new_back(t_list **lst, char *content, size_t size_buf)
+int	ft_lstadd_new_back(t_list **lst, char *content, size_t size)
 {
 	t_list	*lstback;
 	t_list	*lstnew;
 
-	if (!content)
-		return (-1);
 	lstnew = malloc(sizeof(t_list));
-	if (!lstnew)
+	if (!lstnew || !content || !size)
 	{
 		ft_lstclear(lst);
 		return (-1);
 	}
 	lstnew->content = content;
-	lstnew->size = size_buf;
+	lstnew->size = size;
 	lstnew->next = NULL;
 	if (*lst)
 	{
 		lstback = *lst;
 		while (lstback->next)
 			lstback = lstback->next;
-		lstback->next = lstnew ;
+		lstback->next = lstnew;
 	}
 	else
 		*lst = lstnew;
