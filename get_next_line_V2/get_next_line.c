@@ -6,41 +6,34 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:57:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/05 15:08:53 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 13:39:17 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
 
 char	*get_next_line(int fd)
 {
-	char		*buf[1];
+	char		*buf;
 	int			check;
 	t_list		*lst;
-	char		*line;
-	static char	*tmp[1];
+	static char	*tmp;
 
-	if (fd < 0)
-		return (NULL);
-	check = 0;
 	lst = NULL;
+	check = 0;
 	while (check != 1)
 	{
-		*buf = malloc(BUFFER_SIZE);
-		check = read(fd, *buf, BUFFER_SIZE);
-		if (!check)
-		{
-			free(*buf);
-			ft_lstclear(&lst);
-			return (NULL);
-		}
-		check = count(&lst, *buf, tmp);
+		buf = malloc(BUFFER_SIZE);
+		if (!buf)
+			return (free(tmp), ft_lstclear(&lst), NULL);
+		check = read(fd, buf, BUFFER_SIZE);
+		if (check == -1)
+			return (free(tmp), free(buf), ft_lstclear(&lst), NULL);
+		else if (check == 0)
+			return (free(tmp), free(buf), ft_lstjion(&lst));
+		check = count(&lst, buf, &tmp);
 	}
-	line = ft_lstjion(&lst);
-	return (line);
+	return (ft_lstjion(&lst));
 }
 
 int	count(t_list **lst, char *buf, char **tmp)
@@ -58,7 +51,7 @@ int	count(t_list **lst, char *buf, char **tmp)
 	i = 0;
 	while (i < BUFFER_SIZE)
 	{
-		if (buf[i] == '\n' || !buf[i])
+		if (buf[i] == '\n' || !buf[i] || buf[i] == '\021')
 		{
 			if (buf[i] == '\n')
 				i++;
@@ -72,24 +65,10 @@ int	count(t_list **lst, char *buf, char **tmp)
 	return (ft_lstadd_new_back(lst, buf, i));
 }
 
-int	creat_tmp(char *buf, char **tmp, size_t i, t_list **lst)
+int	ft_isalnum(int c)
 {
-	int		pos;
-
-	pos = 0;
-	if (!(BUFFER_SIZE - i) || buf[i - 1] != '\n' || !buf[i])
-	{
-		*tmp = NULL;
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || \
+	(c >= '0' && c <= '9'))
 		return (1);
-	}
-	tmp[0] = malloc(BUFFER_SIZE + 1 - i);
-	if (!*tmp)
-	{
-		ft_lstclear(lst);
-		return (-1);
-	}
-	while (BUFFER_SIZE - i)
-		tmp[0][pos++] = buf[i++];
-	tmp[0][pos] = 0;
-	return (1);
+	return (0);
 }

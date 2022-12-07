@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:41:51 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/03 20:58:57 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 16:03:30 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
-{
-	char			*content;
-	size_t			size;
-	struct s_list	*next;
-}	t_list;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-void	ft_lstclear(t_list **lst);
-
-int		count(t_list **lst, char *buf, char **tmp);
-int		creat_tmp(char *buf, char **tmp, size_t i, t_list **lst);
-int		ft_lstadd_new_back(t_list **lst, char *content, size_t size);
-
-char	*ft_alloc_line(t_list **lst);
-char	*ft_lstjion(t_list **lst);
 char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2, size_t size);
+
+int		check_end(char *buf, char **line, char **tmp);
+int		read_next_line(int fd, char **memory, char **tmp);
+int		dup_end_buf(char *buf, char **memory, char **tmp, size_t size);
+
+size_t	ft_strlen(const char *s);
 
 #endif

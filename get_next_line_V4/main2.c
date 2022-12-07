@@ -6,52 +6,35 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:14:14 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/05 16:10:43 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 20:12:00 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
-void	get_next(int fd, char **line);
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-
-	if (fd < 0)
-		return (NULL);
-	get_next(fd, &line);
-	return (line);
-}
-
-void	get_next(int fd, char **line)
-{
-	char		*buf[1];
+	char		*buf;
 	int			check;
 	t_list		*lst;
-	static char	*tmp[1];
+	static char	*tmp;
 
-	check = 0;
 	lst = NULL;
+	check = 0;
 	while (check != 1)
 	{
-		*buf = malloc(BUFFER_SIZE);
-		check = read(fd, *buf, BUFFER_SIZE);
+		buf = malloc(BUFFER_SIZE);
+		if (!buf)
+			return (free(tmp), ft_lstclear(&lst), NULL);
+		check = read(fd, buf, BUFFER_SIZE);
 		if (check == -1)
-		{
-			free(*buf);
-			ft_lstclear(&lst);
-			line[0] = NULL;
-			return ;
-		}
+			return (free(tmp), free(buf), ft_lstclear(&lst), NULL);
 		else if (check == 0)
-			break ;
-		check = count(&lst, *buf, tmp);
+			return (free(tmp), free(buf), ft_lstjion(&lst));
+		check = count(&lst, buf, &tmp);
 	}
-	line[0] = ft_lstjion(&lst);
+	return (ft_lstjion(&lst));
 }
 
 int	count(t_list **lst, char *buf, char **tmp)
@@ -93,15 +76,15 @@ int	creat_tmp(char *buf, char **tmp, size_t i, t_list **lst)
 		*tmp = NULL;
 		return (1);
 	}
-	tmp[0] = malloc(BUFFER_SIZE + 1 - i);
+	*tmp = malloc(BUFFER_SIZE + 1 - i);
 	if (!*tmp)
 	{
 		ft_lstclear(lst);
 		return (-1);
 	}
 	while (BUFFER_SIZE - i)
-		tmp[0][pos++] = buf[i++];
-	tmp[0][pos] = 0;
+		(*tmp)[pos++] = buf[i++];
+	(*tmp)[pos] = 0;
 	return (1);
 }
 
@@ -200,6 +183,7 @@ char	*ft_lstjion(t_list **lst)
 	return (line);
 }
 
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	pos;
@@ -222,7 +206,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("text.txt", O_RDONLY);
+	fd = open("test/1char.txt", O_RDONLY);
 	line = "";
 	while (line)
 	{
