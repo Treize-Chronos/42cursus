@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:46:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 14:15:11 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 17:45:52 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	ft_lstadd_new_back(t_list **lst, char *content, size_t size)
 	t_list	*lstback;
 	t_list	*lstnew;
 
+	if (content[size] == '\n')
+		size++;
 	lstnew = malloc(sizeof(t_list));
 	if (!lstnew || !content || !size)
 	{

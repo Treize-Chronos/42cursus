@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:14:14 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 13:57:58 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 20:36:17 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(void)
 	int		fd;
 	char	*line;
 
-	fd = open("test/1char.txt", O_RDONLY);
+	fd = open("test/limits", O_RDONLY);
 	line = "";
 	while (line)
 	{

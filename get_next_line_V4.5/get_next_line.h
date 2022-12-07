@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:41:51 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:04 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 20:25:11 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	get_next(int fd, char **line);
 
 int		ft_isalnum(int c);
 int		count(t_list **lst, char *buf, char **tmp);
+int		count_tmp(t_list **lst, char *buf, char **tmp);
 int		creat_tmp(char *buf, char **tmp, size_t i, t_list **lst);
 int		ft_lstadd_new_back(t_list **lst, char *content, size_t size);
 

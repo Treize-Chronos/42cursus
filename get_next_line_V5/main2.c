@@ -1,16 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:46:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 14:15:11 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/12/01 18:14:14 by eguelin           #+#    #+#             */
+/*   Updated: 2022/12/07 16:49:40 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <fcntl.h>
+
+char	*get_next_line(int fd)
+{
+	char		*buf;
+	int			check;
+	t_list		*lst;
+	static char	*tmp;
+
+	lst = NULL;
+	check = 0;
+	while (check != 1)
+	{
+		if (!tmp)
+		{
+			buf = read_next_line(fd, &lst, &check);
+			if (!buf)
+				return (NULL);
+			else if (check == 0)
+				return (free(buf), ft_lstjion(&lst));
+		}
+		else
+			buf = tmp;
+		check = count(&lst, buf, &tmp);
+		if (check == -1)
+			return (free(tmp), free(buf), ft_lstclear(&lst), NULL);
+	}
+	return (ft_lstjion(&lst));
+}
+
+char	*read_next_line(int fd, t_list **lst, int *check)
+{
+	char	*buf;
+
+	buf = malloc(BUFFER_SIZE);
+	if (!buf)
+		return (ft_lstclear(lst), NULL);
+	*check = read(fd, buf, BUFFER_SIZE);
+	if (*check == -1)
+		return (free(buf), ft_lstclear(lst), NULL);
+	return (buf);
+}
+
+int	count(t_list **lst, char *buf, char **tmp)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		if (buf[i] == '\n' || !buf[i] || buf[i] == '\021' || buf[i] == '\276')
+		{
+			if (buf[i] == '\n')
+				i++;
+			if (ft_lstadd_new_back(lst, buf, i) == -1)
+				return (-1);
+			if (!*tmp)
+				return (creat_tmp(buf, tmp, i, lst));
+			if (!creat_tmp(buf, tmp, i, lst))
+				return (-1);
+			return (0);
+		}
+		i++;
+	}
+	return (ft_lstadd_new_back(lst, buf, i));
+}
 
 int	creat_tmp(char *buf, char **tmp, size_t i, t_list **lst)
 {
@@ -127,4 +193,37 @@ char	*ft_lstjion(t_list **lst)
 	line[i] = 0;
 	ft_lstclear(lst);
 	return (line);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	pos;
+
+	pos = 0;
+	while (s[pos])
+		pos++;
+	return (pos);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
+
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test/variable_nls.txt", O_RDONLY);
+	line = "";
+	while (line)
+	{
+		line = get_next_line(fd);
+		ft_putstr_fd(line, 1);
+	}
+	close(fd);
+	return (0);
 }

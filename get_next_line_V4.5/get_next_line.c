@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:57:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:15 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 20:26:10 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*get_next_line(int fd)
 				return (NULL);
 			else if (check == 0)
 				return (free(buf), ft_lstjion(&lst));
+			check = count(&lst, buf, &tmp);
 		}
 		else
-			buf = tmp;
-		check = count(&lst, buf, &tmp);
+			check = count_tmp(&lst, tmp, &tmp);
 		if (check == -1)
 			return (free(tmp), free(buf), ft_lstclear(&lst), NULL);
 	}
@@ -69,6 +69,31 @@ int	count(t_list **lst, char *buf, char **tmp)
 			if (ft_lstadd_new_back(lst, buf, i) == -1 || \
 			!creat_tmp(buf, tmp, i, lst))
 				return (-1);
+			return (1);
+		}
+		i++;
+	}
+	return (ft_lstadd_new_back(lst, buf, i));
+}
+
+int	count_tmp(t_list **lst, char *buf, char **tmp)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		if (buf[i] == '\n' || !buf[i] || buf[i] == '\021' || buf[i] == '\276')
+		{
+			j = i;
+			if (buf[i] == '\n')
+				i++;
+			if (ft_lstadd_new_back(lst, buf, i) == -1 || \
+			!creat_tmp(buf, tmp, i, lst))
+				return (-1);
+			if (!buf[j])
+				return (0);
 			return (1);
 		}
 		i++;

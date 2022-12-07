@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:57:15 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:15 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 17:45:03 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,15 @@ int	count(t_list **lst, char *buf, char **tmp)
 	size_t	i;
 
 	i = 0;
-	*tmp = NULL;
-	i = 0;
 	while (i < BUFFER_SIZE)
 	{
 		if (buf[i] == '\n' || !buf[i] || buf[i] == '\021' || buf[i] == '\276')
 		{
-			if (buf[i] == '\n')
-				i++;
-			if (ft_lstadd_new_back(lst, buf, i) == -1 || \
-			!creat_tmp(buf, tmp, i, lst))
+			if (ft_lstadd_new_back(lst, buf, i) == -1)
 				return (-1);
-			return (1);
+			if (*tmp && !buf[i])
+				return (0);
+			return (creat_tmp(buf, tmp, i, lst));
 		}
 		i++;
 	}
