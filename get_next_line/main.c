@@ -6,41 +6,28 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:14:14 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/02 19:52:47 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 16:38:32 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	pos;
-
-	pos = 0;
-	while (s[pos])
-		pos++;
-	return (pos);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
-}
+#include <stdio.h>
 
 int	main(void)
 {
 	int		fd;
+	int		i;
 	char	*line;
 
 	fd = open("text.txt", O_RDONLY);
 	line = "";
+	i = 1;
 	while (line)
 	{
 		line = get_next_line(fd);
-		ft_putstr_fd(line, 1);
+		printf("l%d. %s", i, line);
+		i++;
 	}
 	close(fd);
 	return (0);

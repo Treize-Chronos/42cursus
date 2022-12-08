@@ -5,67 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:57:10 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/03 19:33:06 by eguelin          ###   ########lyon.fr   */
+/*   Created: 2022/12/03 17:57:15 by eguelin           #+#    #+#             */
+/*   Updated: 2022/12/08 17:04:09 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 4
-#endif
+#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
-	char	*buf[1];
-	int		check;
-	t_list	*lst;
-	char	*line;
+	char		*tmp;
+	char static	buf[BUFFER_SIZE];
+	int			i;
 
-	if (fd < 0)
+	tmp = NULL;
+	i = ft_check_end_line(buf, &tmp);
+	if (i)
+		return (tmp);
+	else if (i == -1)
 		return (NULL);
-	check = 0;
-	lst = NULL;
-	while (check != 1)
+	while (!i)
 	{
-		*buf = malloc(BUFFER_SIZE);
-		check = read(fd, *buf, BUFFER_SIZE);
-		if (!check)
-		{
-			free(*buf);
-			ft_lstclear(&lst);
-			return (NULL);
-		}
-		check = jsp(&lst, *buf);
+		ft_memset(buf, 0, BUFFER_SIZE);
+		i = read(fd, buf, BUFFER_SIZE);
+		if (i == 0)
+			return (tmp);
+		else if (i == -1)
+			return (free(tmp), tmp = NULL, NULL);
+		i = ft_check_end_line(buf, &tmp);
+		if (i == -1)
+			return (free(tmp), tmp = NULL, NULL);
 	}
-	line = ft_lstjion(&lst);
-	return (line);
-}
-
-int	jsp(t_list	**lst, char *buf)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < BUFFER_SIZE)
-	{
-		if (buf[i] == '\n' || !buf[i])
-		{
-			if (buf[i] == '\n')
-				i++;
-			if (ft_lstadd_new_back(lst, buf, i) == -1)
-			{
-				ft_lstclear(lst);
-				return (-1);
-			}
-			return (1);
-		}
-		i++;
-	}
-	if (ft_lstadd_new_back(lst, buf, i) == -1)
-	{
-		ft_lstclear(lst);
-		return (-1);
-	}
-	return (0);
+	return (tmp);
 }
