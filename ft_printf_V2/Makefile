@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 12:06:08 by eguelin           #+#    #+#              #
-#    Updated: 2022/11/23 17:20:42 by eguelin          ###   ########lyon.fr    #
+#    Updated: 2022/12/09 13:30:19 by eguelin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ AR		= ar rcs
 
 RM		= rm -f
 
-${NAME}:	${OBJS} Makefile
+${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 
-%.o:		%.c ${HEADER}
+%.o:		%.c ${HEADER} Makefile
 			${CC} ${CFLAGS} -c $< -o $@
 
 all:		${NAME}
