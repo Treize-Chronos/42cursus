@@ -6,12 +6,13 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:54:43 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/15 18:05:05 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/11/18 11:30:00 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

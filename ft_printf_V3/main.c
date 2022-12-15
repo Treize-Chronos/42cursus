@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 13:32:07 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/14 15:15:39 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/09 14:03:18 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(void)
 {
-	//int		i = 42;
-	//nt*	j = &i;
+	int		i = 42;
+	int*	j = &i;
 
-	ft_printf("\n%d", ft_printf("\n%p", -1));
+	//ft_printf("\n%d", ft_printf("\n%p", j));
 	//printf("\n%d", printf("\n%p", j));
 	//ft_printf("\n%d", ft_printf("\n%%%c", 'j'));
 	//printf("\n%d", printf("\n%%%c", 'j'));
@@ -36,7 +36,7 @@ int	main(void)
 	//ft_printf("\n%d", ft_printf("\n%%"));
 	//printf("\n%d", printf("\n%%"));
 	//ft_printf("\n%d", ft_printf("\n%%"));
-	//ft_printf("\n%d", ft_printf("\n%c %s %p %d %i %u %x %X %%", 'p', NULL, j , 4242424242, 4242424242, 4242424242, 4242424242, 4242424242));
-	//printf("\n%d", printf("\n%c %s %p %d %i %u %x %X %%", 'p', NULL, j , 4242424242, 4242424242, 4242424242, 4242424242, 4242424242));
+	ft_printf("\n%d", ft_printf("\n%c %s %p %d %i %u %x %X %%", 'p', NULL, j , 4242424242, 4242424242, 4242424242, 4242424242, 4242424242));
+	printf("\n%d", printf("\n%c %s %p %d %i %u %x %X %%", 'p', NULL, j , 4242424242, 4242424242, 4242424242, 4242424242, 4242424242));
 	return (0);
 }
