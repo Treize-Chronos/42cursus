@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_print_address(unsigned long un)
+int	ft_print_address(unsigned long n)
 {
 	ft_print_str("0x");
 	return (2 + ft_print_base(un, 16, "0123456789abcdef"));

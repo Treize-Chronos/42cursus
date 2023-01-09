@@ -12,13 +12,17 @@
 
 #include "ft_printf.h"
 
-char	*ft_print_c(char c)
+char	*ft_print_char(char c, size_t *size)
 {
 	char	*s;
 
 	s = malloc(2);
 	if (!s)
+	{
+		*size = 0;
 		return (NULL);
+	}
+	*size += 1;
 	s[0] = c;
 	s[1] = 0;
 	return (s);

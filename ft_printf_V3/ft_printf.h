@@ -18,9 +18,9 @@
 # include "libft.h"
 
 int	ft_print_nbr(int n);
-int	ft_print_char(char c);
+int	ft_print_char(char c, size_t size);
 int	ft_print_str(const char *s);
-int	ft_print_all(char c, va_list arg);
+int	ft_print_all(char c, va_list arg, t_list **print, size_t *size);
 int	ft_print_address(unsigned long un);
 int	ft_printf(const char *format, ...);
 int	ft_print_base(unsigned long un, unsigned long size_set, char *set);

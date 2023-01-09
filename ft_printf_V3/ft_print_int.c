@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_int_to_str.c                           :+:      :+:    :+:   */
+/*   ft_int_to_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/14 17:32:15 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 17:35:36 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 /*
 #include <stdio.h>
 #include <stdlib.h>
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	pos;
-
-	pos = 0;
-	while (s[pos])
-		pos++;
-	return (pos);
-}
 */
-static int	ft_unsigned_nbrlen(unsigned int n)
+
+static int	ft_nbrlen(unsigned int n, char c)
 {
 	int	i;
 
 	i = 0;
 	if (!n)
 		return (1);
+	if (c != 'u' && n >= (n * -1))
+	{
+		i++;
+		n *= -1;
+	}
 	while (n)
 	{
 		i++;
@@ -40,16 +36,21 @@ static int	ft_unsigned_nbrlen(unsigned int n)
 	return (i);
 }
 
-char	*ft_printf_u(unsigned int n)
+char	*ft_print_int(unsigned int n, char c)
 {
 	char	*s;
 	int		i;
 
-	i = ft_unsigned_nbrlen(n);
+	i = ft_nbrlen(n, c);
 	s = malloc(i + 1);
 	if (!s)
 		return (NULL);
 	s[i--] = 0;
+	if (c != 'u' && n >= (n * -1))
+	{
+		s[0] = '-';
+		n *= -1;
+	}
 	while (n)
 	{
 		s[i--] = (n % 10) + '0';
@@ -57,15 +58,37 @@ char	*ft_printf_u(unsigned int n)
 	}
 	return (s);
 }
+
 /*
 int	main(int argc, char const *argv[])
 {
 	char	*s;
 
 	(void) argc;
-	s = ft_utoa(atoi(argv[1]));
+	s = ft_print_int(atoi(argv[1]), 'i');
 	printf("%s\n%s", s, argv[1]);
 	free (s);
 	return (0);
+}
+*/
+/*
+#include "ft_printf.h"
+
+int	ft_print_nbr(int n)
+{
+	unsigned int	un;
+	int				count;
+
+	un = n;
+	count = 0;
+	if (n < 0)
+	{
+		count += ft_print_char('-');
+		un *= -1;
+	}
+	if (un > 9)
+		count += ft_print_nbr(un / 10);
+	count += ft_print_char((un % 10) + '0');
+	return (count);
 }
 */

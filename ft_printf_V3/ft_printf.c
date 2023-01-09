@@ -16,23 +16,23 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	larg;
 	size_t	pos;
-	int		size;
+	size_t	size;
+	t_list	*print;
 
 	pos = 0;
 	size = 0;
-	if (write(1, 0, 0) != 0 || !format)
-		return (-1);
+	print = NULL;
 	va_start(larg, format);
 	while (format[pos])
 	{
 		if (format[pos] == '%')
-		{
-			size += ft_print_all(format[pos + 1], larg);
-		}
+			ft_print_all(format[pos + 1], larg, &print, &size);
 		else
-			size += ft_print_char(format[pos]);
+		{
+			ft_print_char(format[pos], &size);
+		}
 		if (format[pos + 1] && format[pos] == '%')
-				pos ++;
+			pos ++;
 		pos++;
 	}
 	va_end(larg);

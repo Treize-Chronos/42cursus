@@ -24,14 +24,12 @@ static int	ft_print_all_2(char c, va_list arg)
 	return (size);
 }
 
-int	ft_print_all(char c, va_list arg)
+void	ft_print_all(char c, va_list arg, t_list **print, size_t *size)
 {
-	int		size;
-	char	*s;
 
-	size = 0;
+
 	if (c == 'c')
-		size = ft_print_char(va_arg(arg, int));
+		ft_print_char(va_arg(arg, int), size);
 	else if (c == 's')
 	{
 		s = va_arg(arg, char *);
