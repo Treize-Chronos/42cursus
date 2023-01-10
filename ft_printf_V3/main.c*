@@ -1,0 +1,335 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/19 13:32:07 by eguelin           #+#    #+#             */
+/*   Updated: 2023/01/10 16:45:30 by eguelin          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+#include <stdio.h>
+/*
+char	*ft_lstjion(t_list **lst, size_t size)
+{
+	char	*line;
+	t_list	*lstback;
+	size_t	i;
+	size_t	j;
+
+	if (!*lst || !size)
+		return (NULL);
+	line = malloc(size + 1);
+	if (!line)
+		return (ft_lstclear(lst, free), NULL);
+	lstback = *lst;
+	i = 0;
+	while (lstback)
+	{
+		j = 0;
+		while (((char *)(lstback->content))[j])
+			line[i++] = ((char *)(lstback->content))[j++];
+		lstback = lstback->next;
+	}
+	line[i] = 0;
+	return (line);
+}
+
+static char	*ft_print_all_2(char c, va_list arg, size_t *size, int *error)
+{
+	char	*str;
+
+	if (c == 'X')
+		str = ft_print_base(va_arg(arg, unsigned int), c, size, error);
+	else if (c == '%')
+		str = ft_print_char('%', size, error);
+	else
+		str = NULL;
+	return (str);
+}
+
+char	*ft_print_all(char c, va_list arg, size_t *size, int *error)
+{
+	char	*str;
+
+	if (c == 'c')
+		str = ft_print_char(va_arg(arg, int), size, error);
+	else if (c == 's')
+		str = ft_print_str(va_arg(arg, char *), size, error);
+	else if (c == 'd' || c == 'i' || c == 'u')
+		str = ft_print_int(va_arg(arg, unsigned int), c, size, error);
+	else if (c == 'x')
+		str = ft_print_base(va_arg(arg, unsigned int), c, size, error);
+	else
+		str = ft_print_all_2(c, arg, size, error);
+	return (str);
+}
+
+static int	ft_nbrlen_base(unsigned long n)
+{
+	int	i;
+
+	i = 0;
+	if (!n)
+		return (1);
+	while (n)
+	{
+		i++;
+		n = n / 16;
+	}
+	return (i);
+}
+
+char	*ft_print_base(unsigned long n, char c, size_t *size, int *error)
+{
+	char	*base;
+	int		i;
+	char	*s;
+
+	if (c == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	i = ft_nbrlen_base(n);
+	*size += i;
+	s = malloc(i + 1);
+	if (!s)
+	{
+		*error = 1;
+		return (NULL);
+	}
+	s[i--] = 0;
+	while (n)
+	{
+		s[i--] = base[n % 16];
+		n = (n / 16);
+	}
+	return (s);
+}
+
+char	*ft_print_char(char c, size_t *size, int *error)
+{
+	char	*s;
+
+	s = malloc(2);
+	if (!s)
+	{
+		*error = 1;
+		return (NULL);
+	}
+	if (c)
+		*size += 1;
+	s[0] = c;
+	s[1] = 0;
+	return (s);
+}
+
+static int	ft_nbrlen(unsigned int n, char c)
+{
+	int	i;
+
+	i = 0;
+	if (!n)
+		return (1);
+	if (c != 'u' && n >= (n * -1))
+	{
+		i++;
+		n *= -1;
+	}
+	while (n)
+	{
+		i++;
+		n = n / 10;
+	}
+	return (i);
+}
+
+char	*ft_print_int(unsigned int n, char c, size_t *size, int *error)
+{
+	char	*s;
+	int		i;
+
+	i = ft_nbrlen(n, c);
+	*size += i;
+	s = malloc(i + 1);
+	if (!s)
+	{
+		*error = 1;
+		return (NULL);
+	}
+	s[i--] = 0;
+	if (c != 'u' && n >= (n * -1))
+	{
+		s[0] = '-';
+		n *= -1;
+	}
+	while (n)
+	{
+		s[i--] = (n % 10) + '0';
+		n = (n / 10);
+	}
+	return (s);
+}
+
+char	*ft_print_str(char *s, size_t *size, int *error)
+{
+	char	*s2;
+
+	*size += ft_strlen(s);
+	s2 = ft_strdup(s);
+	if (!s2)
+	{
+		*error = 1;
+		return (NULL);
+	}
+	return (s2);
+}
+
+int	ft_printf_format(char *format, va_list arg, t_list **print, size_t *size)
+{
+	char	*str;
+	t_list	*lst;
+	size_t	pos;
+	int		error;
+
+	pos = 0;
+	error = 0;
+	while (format[pos])
+	{
+		if (format[pos] == '%')
+			str = ft_print_all(format[pos + 1], arg, size, &error);
+		else
+			str = ft_print_char(format[pos], size, &error);
+		lst = ft_lstnew(str);
+		ft_lstadd_back(print, lst);
+		if (error)
+			return (ft_lstclear(print, free), -1);
+		if (format[pos + 1] && format[pos] == '%')
+			pos ++;
+		pos++;
+	}
+	return (0);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	arg;
+	size_t	size;
+	t_list	*print;
+	char	*str;
+
+	size = 0;
+	print = NULL;
+	va_start(arg, format);
+	if (ft_printf_format((char *)format, arg, &print, &size))
+		return (-1);
+	str = ft_lstjion(&print, size);
+	ft_lstclear(&print, free);
+	if ((write(1, str, size)) == -1)
+		return (-1);
+	free(str);
+	va_end(arg);
+	return (size);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	pos;
+
+	pos = 0;
+	while (s[pos])
+		pos++;
+	return (pos);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	if (*lst)
+		ft_lstlast(*lst)->next = new;
+	else
+		*lst = new;
+}
+
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*tmp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+}
+
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	if (lst && del)
+	{
+		del(lst->content);
+		free(lst);
+	}
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*lstnew;
+
+	lstnew = malloc(sizeof(t_list));
+	if (!lstnew)
+		return (NULL);
+	lstnew->content = content;
+	lstnew->next = NULL;
+	return (lstnew);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+	size_t	size;
+
+	size = ft_strlen(s1) + 1;
+	s2 = malloc(size);
+	if (!s2)
+		return (NULL);
+	ft_strlcpy(s2, s1, size);
+	return (s2);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	pos;
+
+	pos = 0;
+	if (!dstsize)
+		return (ft_strlen(src));
+	while (pos < dstsize - 1 && src[pos])
+	{
+		dst[pos] = src[pos];
+		pos++;
+	}
+	dst[pos] = 0;
+	return (ft_strlen(src));
+}
+*/
+int	main(void)
+{
+	printf("%d", printf(" %c %c %c ", '0', 0, '1'));
+	return (0);
+}

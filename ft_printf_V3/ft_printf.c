@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 15:24:07 by eguelin           #+#    #+#             */
-/*   Updated: 2023/01/10 15:01:09 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 16:54:10 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	ft_printf_format(char *format, va_list arg, t_list **print, size_t *size)
 			str = ft_print_all(format[pos + 1], arg, size, &error);
 		else
 			str = ft_print_char(format[pos], size, &error);
-		lst = ft_lstnew(str);
-		ft_lstadd_back(print, lst);
 		if (error)
 			return (ft_lstclear(print, free), -1);
+		lst = ft_lstnew(str);
+		ft_lstadd_back(print, lst);
 		if (format[pos + 1] && format[pos] == '%')
 			pos ++;
 		pos++;
