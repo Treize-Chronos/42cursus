@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
-/*   Updated: 2023/01/09 13:30:03 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 15:07:11 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_nbrlen(unsigned int n, char c)
 	return (i);
 }
 
-char	*ft_print_int(unsigned int n, char c, size_t *size)
+char	*ft_print_int(unsigned int n, char c, size_t *size, int *error)
 {
 	char	*s;
 	int		i;
@@ -46,7 +46,7 @@ char	*ft_print_int(unsigned int n, char c, size_t *size)
 	s = malloc(i + 1);
 	if (!s)
 	{
-		*size = 0;
+		*error = 1;
 		return (NULL);
 	}
 	s[i--] = 0;

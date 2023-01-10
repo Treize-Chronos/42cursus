@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:49:56 by eguelin           #+#    #+#             */
-/*   Updated: 2023/01/09 18:19:20 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 14:27:03 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_lstjion(t_list **lst, size_t size)
 	t_list	*lstback;
 	size_t	i;
 	size_t	j;
-	char	*str;
 
 	if (!*lst || !size)
 		return (NULL);
@@ -27,18 +26,13 @@ char	*ft_lstjion(t_list **lst, size_t size)
 		return (ft_lstclear(lst, free), NULL);
 	lstback = *lst;
 	i = 0;
-	while (lstback->next)
+	while (lstback)
 	{
 		j = 0;
-		str = (char *)(lstback->content);
-		while (str[j])
-			line[i++] = str[j++];
+		while (((char *)(lstback->content))[j])
+			line[i++] = ((char *)(lstback->content))[j++];
 		lstback = lstback->next;
 	}
-	j = 0;
-	str = (char *)(lstback->content);
-	while (str[j])
-		line[i++] = str[j++];
 	line[i] = 0;
 	return (line);
 }

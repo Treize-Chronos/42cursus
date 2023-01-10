@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 10:57:42 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/14 17:37:58 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/10 15:07:03 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_print_char(char c, size_t *size)
+char	*ft_print_char(char c, size_t *size, int *error)
 {
 	char	*s;
 
 	s = malloc(2);
 	if (!s)
 	{
-		*size = 0;
+		*error = 1;
 		return (NULL);
 	}
 	*size += 1;
