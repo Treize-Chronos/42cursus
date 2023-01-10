@@ -6,47 +6,39 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:38:59 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/09 13:31:11 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/09 19:35:06 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_print_all_2(char c, va_list arg)
+static char	*ft_print_all_2(char c, va_list arg, size_t *size)
 {
-	int	size;
+	char	*str;
 
-	size = 0;
 	if (c == 'X')
-		size = ft_print_base(va_arg(arg, unsigned int), 16, "0123456789ABCDEF");
+		str = ft_print_base(va_arg(arg, unsigned int), c, size);
 	else if (c == '%')
-		size = ft_print_char('%');
-	return (size);
+		str = ft_print_char('%', size);
+	return (str);
 }
 
-void	ft_print_all(char c, va_list arg, t_list **print, size_t *size)
+char	*ft_print_all(char c, va_list arg, size_t *size)
 {
-
+	char	*str;
 
 	if (c == 'c')
-		ft_print_char(va_arg(arg, int), size);
+		str = ft_print_char(va_arg(arg, int), size);
 	else if (c == 's')
-	{
-		s = va_arg(arg, char *);
-		if (!s)
-			size = ft_print_str("(null)");
-		else
-			size = ft_print_str(s);
-	}
-	else if (c == 'p')
-		size = ft_print_address(va_arg(arg, long));
-	else if (c == 'd' || c == 'i')
-		size = ft_print_nbr(va_arg(arg, int));
-	else if (c == 'u')
-		size = ft_print_base(va_arg(arg, unsigned int), 10, "0123456789");
+		str = ft_print_str(va_arg(arg, char *), size);
+	else if (c == 'd' || c == 'i' || c == 'u')
+		str = ft_print_int(va_arg(arg, unsigned int), c, size);
 	else if (c == 'x')
-		size = ft_print_base(va_arg(arg, unsigned int), 16, "0123456789abcdef");
+		str = ft_print_base(va_arg(arg, unsigned int), c, size);
 	else
-		size = ft_print_all_2(c, arg);
-	return (size);
+		str = ft_print_all_2(c, arg, size);
+	return (str);
 }
+/*	else if (c == 'p')
+		str = ft_print_address(va_arg(arg, long), size);
+	*/

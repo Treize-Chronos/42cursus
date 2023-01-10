@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/14 17:28:28 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/09 18:05:28 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_nbrlen_base(unsigned long n)
 	return (i);
 }
 
-char	*ft_print_base(unsigned long n, char c)
+char	*ft_print_base(unsigned long n, char c, size_t *size)
 {
 	char	*base;
 	int		i;
@@ -41,13 +41,17 @@ char	*ft_print_base(unsigned long n, char c)
 	else
 		base = "0123456789ABCDEF";
 	i = ft_nbrlen_base(n);
+	*size += i;
 	s = malloc(i + 1);
 	if (!s)
+	{
+		*size = 0;
 		return (NULL);
+	}
 	s[i--] = 0;
 	while (n)
 	{
-		s[i--] = set[n % 16];
+		s[i--] = base[n % 16];
 		n = (n / 16);
 	}
 	return (s);

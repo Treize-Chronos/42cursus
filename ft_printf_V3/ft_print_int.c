@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_to_str.c                                    :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:03:24 by eguelin           #+#    #+#             */
-/*   Updated: 2022/12/14 17:35:36 by eguelin          ###   ########lyon.fr   */
+/*   Updated: 2023/01/09 13:30:03 by eguelin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,19 @@ static int	ft_nbrlen(unsigned int n, char c)
 	return (i);
 }
 
-char	*ft_print_int(unsigned int n, char c)
+char	*ft_print_int(unsigned int n, char c, size_t *size)
 {
 	char	*s;
 	int		i;
 
 	i = ft_nbrlen(n, c);
+	*size += i;
 	s = malloc(i + 1);
 	if (!s)
+	{
+		*size = 0;
 		return (NULL);
+	}
 	s[i--] = 0;
 	if (c != 'u' && n >= (n * -1))
 	{
